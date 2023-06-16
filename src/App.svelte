@@ -1,9 +1,10 @@
 <script lang="ts">
+  import {auth} from "./firebase";
+  import {authState} from "rxfire/auth";
+
   import ChatInput from './lib/ChatInput.svelte';
   import Message from './lib/Message.svelte';
   import '@picocss/pico'
-
-
 
 </script>
 

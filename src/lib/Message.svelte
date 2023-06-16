@@ -10,6 +10,6 @@
 <style>
     article{
         padding: 20px;
-        width: 40%;
+        width: 65%;
     }
 </style>

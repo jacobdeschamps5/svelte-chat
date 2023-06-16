@@ -17,9 +17,10 @@
 
     div{
         position: fixed;
-        bottom: 0;
+        bottom: -19px;
         width: 100%;
         justify-content: center;
         display: flex;
+        
     }
 </style>
