@@ -5,7 +5,6 @@
   import ChatInput from './lib/ChatInput.svelte';
   import Message from './lib/Message.svelte';
 
-  import "@picocss/pico";
   import { signInWithPopup } from "firebase/auth";
 
   let user;
@@ -20,16 +19,15 @@
 
 <main>
   {#if user}
-    Logged in as {user.uid}  
+    <ChatInput/>  
   {:else}
-    <button on:click={login}>
+    <div class="flex justify-center items-center h-screen">
+      <button class="btn items-center" on:click={login}>
         Sign in with Google
-    </button>
+      </button>   
+    </div>
   {/if}
 </main>
 
 <style>
-    main{
-        margin-bottom: 100px
-    }
 </style>
