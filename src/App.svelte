@@ -1,8 +1,8 @@
 <script lang="ts">
   import {auth, provider} from "./firebase";
   import {authState} from "rxfire/auth";
+  import Chatroom from "./lib/Chatroom.svelte";
 
-  import ChatInput from './lib/ChatInput.svelte';
   import Message from './lib/Message.svelte';
 
   import { signInWithPopup } from "firebase/auth";
@@ -15,11 +15,15 @@
     signInWithPopup(auth, provider);
   }
 
+  const logout = () => {
+      auth.signOut();
+  }
+
 </script>
 
 <main>
   {#if user}
-    <ChatInput/>  
+    <Chatroom/>
   {:else}
     <div class="flex justify-center items-center h-screen">
       <button class="btn items-center" on:click={login}>
