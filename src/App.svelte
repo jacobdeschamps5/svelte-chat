@@ -1,18 +1,22 @@
 <script lang="ts">
-  import {auth, provider} from "./firebase";
-  import {authState} from "rxfire/auth";
+  import { writable } from "svelte/store";
+  import {auth, provider, user} from "./firebase";
   import Chatroom from "./lib/Chatroom.svelte";
 
   import Message from './lib/Message.svelte';
+  import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
-  import { signInWithPopup } from "firebase/auth";
-
-  let user;
-
-  const unsubscribe = authState(auth).subscribe(usr => user = usr);
+  //Listen for auth change
+  onAuthStateChanged(auth, () => {
+    user.set(auth.currentUser);
+    console.log($user);
+});
   
   const login = () => {
-    signInWithPopup(auth, provider);
+      signInWithPopup(auth, provider)
+      .catch((error) => {
+      console.log(error.message);
+    });
   }
 
   const logout = () => {
@@ -22,8 +26,14 @@
 </script>
 
 <main>
-  {#if user}
+  {#if $user}
+  
+    <div class="flex justify-end">
+      <button class="btn" on:click={logout}>Logout</button>
+    </div>
+
     <Chatroom/>
+
   {:else}
     <div class="flex justify-center items-center h-screen">
       <button class="btn items-center" on:click={login}>

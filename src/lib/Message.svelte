@@ -1,31 +1,25 @@
 <script lang="ts">
-  export let myMessage: boolean = false;
+  import {user} from "../firebase"
+  
+  export let text: string;
+  export let name: string;
+  export let id: string
 </script>
 
 <main>
 
-  {#if myMessage}
-    <div class="chat chat-end pt-8 px-4">
-        <div class="chat-image avatar">
-          <div class="w-10 rounded-full bg-black">
-          </div>
-        </div>
-        <div class="chat-bubble max-w-xl">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque libero obcaecati sed, impedit quisquam laborum, velit rerum quas soluta ut porro rem optio nihil magni atque saepe, id esse dolores!
-        </div>
-    </div>
-  {:else}
-  <div class="chat chat-start pt-6 px-4">
+  <div class="chat {$user.uid === id? "chat-end" : "chat-start"} pt-8 px-4 pl-16">
     <div class="chat-image avatar">
-      <div class=" w-10 rounded-full bg-black">
+      <div class="w-10 rounded-full bg-black">
       </div>
     </div>
     <div class="chat-bubble max-w-xl">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque libero obcaecati sed, impedit quisquam laborum, velit rerum quas soluta ut porro rem optio nihil magni atque saepe, id esse dolores!
+      {text}
     </div>
-</div>
-
-  {/if}
+    <div class="text-sm">
+      {name}
+    </div>
+  </div>
 </main>
 
 
