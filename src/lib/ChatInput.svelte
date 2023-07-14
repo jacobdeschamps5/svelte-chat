@@ -1,6 +1,8 @@
 <script lang="ts">
   import { addDoc, serverTimestamp, collection} from "firebase/firestore";
   import {db, user} from "../firebase" 
+  import Icon from '@iconify/svelte';
+
 
   let message: string;
 
@@ -19,14 +21,15 @@
 
 </script>
 
-<div class="fixed bottom-0 w-full py-4 bg-gradient-to-b from-transparent to-purple-950">
-    <form class="px-16 containerWrap flex mt-6" on:submit|preventDefault={sendMessage}>
-      <input class="input w-full focus:outline-none bg-slate-950 rounded-r-none" type="text" placeholder="Send a message" bind:value={message} />
-      <button class="w-auto bg-sky-700 text-white rounded-r-lg px-5 text-sm ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>
-        
-      </button>
-    </form>
-</div>
+
+<form on:submit|preventDefault={sendMessage}>
+  <div class="mb-4 bottom-0 mx-16 border-2 border-gray-200 border-opacity-25 flex text-white items-center rounded-2xl">
+    <input class="input bg-transparent w-full  focus:outline-none " type="text" placeholder="Send a message" bind:value={message} />    
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="pr-4 hover:scale-105 cursor-pointer" on:click={sendMessage}>
+      <Icon icon="mingcute:send-line"  width="25" height="25" color="#3BC2FF" /> 
+    </div>
+  </div>
+</form>
+
+

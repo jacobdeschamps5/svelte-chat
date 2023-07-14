@@ -18,13 +18,11 @@
     onDestroy(() => unsubscribe);
 </script>
 
-<main>
-    <div class="mt-10 mb-28">
-        {#each $messages as message}
-            <Message text={message.text} name={message.name} id={message.uid}/>
-        {/each}
-    </div>
-    <ChatInput/>
-</main>
+
+<div class="overflow-y-auto w-full h-full inset-x-0 mx-auto py-2">
+    {#each $messages as message}
+        <Message text={message.text} name={message.name} id={message.uid}/>
+    {/each}
+</div>
 
 
