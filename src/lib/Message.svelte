@@ -8,7 +8,7 @@
 
 <main>
   <div class="chat {$user.uid === id? "chat-end" : "chat-start"} pt-4 px-4">
-    <div class="chat-header text-xs opacity-50 pb-2">{name}</div>
+    <div class="chat-header text-xs text-white pb-2">{name}</div>
     <div class="chat-image avatar">
       <div class="w-10 rounded-full bg-black">
       </div>

@@ -10,7 +10,7 @@
     
     const q = query(collection(db, "messages"), orderBy('createdAt'), limit(50));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-        const m = snapshot.docs.map((doc) => ({...doc.data(),}));
+        const m = snapshot.docs.map((doc) => ({...doc.data()}));
         messages.set(m);
         console.log($messages);
     });
