@@ -1,5 +1,5 @@
 import { deleteApp, getApp, getApps, initializeApp } from "firebase/app";
-import { getAuth ,  setPersistence ,GoogleAuthProvider} from "firebase/auth";
+import { getAuth ,GoogleAuthProvider} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { writable } from "svelte/store";
 
@@ -28,7 +28,7 @@ else{
 console.log(firebaseApp);
 
 export const auth = getAuth(firebaseApp);
-export let user = writable(auth.currentUser);
+
 
 export const provider = new GoogleAuthProvider();
 export const db = getFirestore(firebaseApp);

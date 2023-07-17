@@ -1,6 +1,7 @@
 <script lang="ts">
   import { addDoc, serverTimestamp, collection} from "firebase/firestore";
-  import {db, user} from "../firebase" 
+  import {db} from "../firebase" ;
+  import {user} from "../stores"
   import Icon from '@iconify/svelte';
 
 

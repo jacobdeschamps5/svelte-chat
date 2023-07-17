@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {user} from "../firebase"
+  import {user} from "../stores"
   
   export let text: string;
   export let name: string;

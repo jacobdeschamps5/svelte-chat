@@ -1,10 +1,11 @@
 <script lang="ts">
-  import {auth, provider, user} from "./firebase";
+  import {auth, provider} from "./firebase";
+  import {user} from './stores';
   import Chatroom from "./lib/Chatroom.svelte";
   import ChatInput from "./lib/ChatInput.svelte";
   import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
   import NavBar from "./lib/NavBar.svelte";
-
+  
     //Listen for auth change
     onAuthStateChanged(auth, () => {
       user.set(auth.currentUser);
