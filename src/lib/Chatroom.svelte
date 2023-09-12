@@ -7,19 +7,27 @@
     import { writable } from "svelte/store";
 
     let messages = writable([]);
-    
+
+    let chatContainer;
+
     const q = query(collection(db, "messages"), orderBy('createdAt'), limit(50));
     const unsubscribe = onSnapshot(q, (snapshot) => {
         const m = snapshot.docs.map((doc) => ({...doc.data()}));
         messages.set(m);
-        console.log($messages);
     });
-
+    
     onDestroy(() => unsubscribe);
+
+        // Function to scroll to the bottom of the chat container
+        const scrollToBottom = () => {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    afterUpdate(scrollToBottom);
 </script>
 
 
-<div class="overflow-y-auto w-full h-full inset-x-0 mx-auto py-2">
+<div bind:this={chatContainer} class="scroll-smooth overflow-y-auto w-full h-full inset-x-0 mx-auto py-2">
     {#each $messages as message}
         <Message text={message.text} name={message.name} id={message.uid}/>
     {/each}

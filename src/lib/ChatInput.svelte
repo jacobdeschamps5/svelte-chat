@@ -23,7 +23,7 @@
 
 
 <form on:submit|preventDefault={sendMessage}>
-  <div class="mb-4 bottom-0 mx-16 border-2 border-gray-200 border-opacity-25 flex text-white items-center rounded-2xl">
+  <div class="my-4 bottom-0 mx-16 border-2 border-gray-200 border-opacity-25 flex text-white items-center  rounded-2xl">
     <input class="input bg-transparent w-full  focus:outline-none " type="text" placeholder="Send a message" bind:value={message} />    
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="pr-4 hover:scale-105 cursor-pointer" on:click={sendMessage}>
