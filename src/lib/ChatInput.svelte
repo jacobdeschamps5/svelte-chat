@@ -4,7 +4,6 @@
   import {user} from "../stores"
   import Icon from '@iconify/svelte';
 
-
   let message: string;
 
   const sendMessage = async() =>{
